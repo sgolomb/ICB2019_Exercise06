@@ -1,0 +1,33 @@
+#Exercise 6
+#1: replicate the functionality of 'head'
+wages <- read.csv("../Intro_Biocomputing/ICB2019_Exercise06/wages.csv")
+#create a new file containing top wages. "top wages" are considered to be wages greater than 20
+top.wages <- wages[wages$wage > 20,]
+#print to R terminal the top 5 wages
+head(top.wages$wage, 5)
+
+
+#2: Load in iris.csv
+iris.csv <- read.csv("../Intro_Biocomputing/ICB2019_Exercise06/iris.csv")
+#convert iris.csv into dataframe
+iris.df <- data.frame(iris.csv, stringsAsFactors = FALSE)
+class(iris.df)
+attributes(iris.df)
+#print last 2 rows in the last 2 columns
+iris.df[c(149,150),c(4,5)]
+#get number of observations for each species in dataset
+a <- ncol(iris.df)
+a - 1
+#get rows with sepal width > 3.5
+iris.df[iris.df$Sepal.Width > 3.5,]
+#write data dor setosa into a new csv file delimited by columns
+setosa <- subset(iris.df, iris.df$Species == "setosa")
+write.csv(setosa, file = "setosa.csv")
+#subset out virginica species
+virginica <- subset(iris.df, iris.df$Species == "virginica")
+#calculate mean petal.length
+mean(virginica$Petal.Length)
+#calculate minimum petal.length
+min(virginica$Petal.Length)
+#calculate maximum petal.length
+max(virginica$Petal.Length)
